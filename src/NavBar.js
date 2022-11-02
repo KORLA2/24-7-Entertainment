@@ -271,7 +271,7 @@ fetch(
           {(news.length == 0 ? Array.from(new Array(12)) : news).map(
             (item, index) => (
               <Grid item xs="auto" sm={6} md={4} lg={3} key={index}>
-                <Card style={{ width: "200px", height: "300px" }}>
+                <Card style={{ width: "200px", height: "300px",background:  'linear-gradient(to right, #ff9966, #ff5e62)' }}>
                   <CardActionArea>
                     {item ? (
                       <CardMedia
