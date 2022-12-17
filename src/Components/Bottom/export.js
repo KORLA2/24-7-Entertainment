@@ -1,4 +1,4 @@
-export default { LiveMatches as LiveMatches } from './LiveMatches'
-export { MostViewed as MostViewed } from "./MostViewed";
-export { PreviousMatches as PreviousMatches } from "./MostViewed";
-export { UpcomingMatches as UpcomingMatches } from "./MostViewed";
+export {default as LiveMatches} from './LiveMatches'
+export {default as MostViewed} from "./MostViewed";
+export {default as UpcomingMatches} from "./UpcomingMatches";
+export {default as PreviousMatches} from "./PreviousMatches";

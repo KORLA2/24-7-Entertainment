@@ -18,33 +18,32 @@ navigate(`/${newValue}`)
   };
 
   return (
-    <BottomNavigation sx={{position:'absolute',bottom:0 ,width:'100%'}} value={value} onChange={handleChange}>
-    
-
+    <BottomNavigation
+      sx={{ position: "absolute", bottom: 0, width: "100%" }}
+      value={value}
+      onChange={handleChange}
+    >
       <BottomNavigationAction
         label="Live"
-        value="Live"
+        value="home"
         icon={<RestoreIcon />}
       />
 
-
-
       <BottomNavigationAction
         label="UpcomingMatches"
-        value="favorites"
+        value="UpcomingMatches"
         icon={<Upcoming />}
       />
 
-
       <BottomNavigationAction
         label="MostViewed"
-        value="nearby"
+        value="MostViewed"
         icon={<LocationOnIcon />}
       />
-    
+
       <BottomNavigationAction
         label="PreviousMatches"
-        value="folder"
+        value="PreviousMatches"
         icon={<FolderIcon />}
       />
     </BottomNavigation>

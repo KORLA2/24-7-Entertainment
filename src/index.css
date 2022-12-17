@@ -2,4 +2,6 @@ body{
 
     padding:0px;
     margin:0px;
+    background:rgb(28, 29, 28);
+scroll-behavior: smooth;
 }

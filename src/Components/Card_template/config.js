@@ -1,0 +1,1 @@
+export let img="https://image.tmdb.org/t/p/w300/"
