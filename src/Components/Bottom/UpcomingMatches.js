@@ -4,6 +4,8 @@ import Pagination from "@mui/material/Pagination";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import ContentModal from '../ContentModal/ContentModal'
+
 import "../Card_template/Card.css";
 import Card from "../Card_template/Card";
 import { Badge } from "@mui/material";
@@ -16,16 +18,20 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-const UpcomingMatches = () => {
+
+
+const UpcomingMatches = ({search,search_movie}) => {
 
 let [movies, setmovies] = useState([]);
 let [category,setcategory]=useState([]);
 let [selected,setselected]=useState([]);
 let [page,setpage]=useState(1)
-let [total,settotal]=useState(0)
+let [total,settotal]=useState(0) ;
+let [open,setOpen]=useState(0)
+ const handleOpen = () => setOpen(true);
 
 let geners_url=useGeners(selected);
-console.log(geners_url)
+
 useEffect(()=>{
 fetch(
   "https://api.themoviedb.org/3/genre/movie/list?api_key=6e2cc560592379165dd290f3913043c8&language=en-US"
@@ -38,20 +44,45 @@ fetch(
 },[])
 
 
+
+
 useEffect(()=>{
 
+if(search===0)
+{
+  fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=6e2cc560592379165dd290f3913043c8&language=en-US&page=${page}&with_genres=${geners_url}`
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      setmovies(response.results);
+      settotal(response.total_pages);
+    })
+    .catch((err) => console.error(err));
+console.log(0);
+
+  
+  }
+
+
+else {
+
+
 fetch(
-  `https://api.themoviedb.org/3/discover/movie?api_key=6e2cc560592379165dd290f3913043c8&language=en-US&page=${page}&with_genres=${geners_url}`
+  `https://api.themoviedb.org/3/search/movie?api_key=6e2cc560592379165dd290f3913043c8&language=en-US&query=${search_movie}&page=${page}&include_adult=false`
 )
   .then((response) => response.json())
-  .then((response) => {setmovies(response.results); settotal(response.total_pages)})
-  .catch((err) => console.error(err));
+  .then((response) => {
+    setmovies(response.results);
+    settotal(response.total_pages);
+  })
+  .catch((err) => console.error(err));;
+console.log(1);
+
+}
+},[page,geners_url,search_movie])
 
 
-
-},[page,geners_url])
-
-console.log(category)
   return (
     <div style={{ padding: "2rem", scrollBehaviour: "smooth" }}>
       {selected.map((e, idx) => (
@@ -85,12 +116,14 @@ console.log(category)
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {movies?.map((e, index) => (
+        
           <Grid item xs={4} sm={4} md={3} key={index} className="hover">
             <Badge
               badgeContent={e.vote_average}
               color={e.vote_average > 5 ? "primary" : "secondary"}
             />
-            <Item>
+           
+            <Item onClick={handleOpen}>
               <Card
                 image={e.poster_path}
                 title={e.original_title || e.name}
@@ -98,7 +131,9 @@ console.log(category)
                 media={e.media_type}
               />
             </Item>
+  <ContentModal open={open} setOpen={setOpen}/>
           </Grid>
+
         ))}
       </Grid>
 
@@ -127,3 +162,5 @@ console.log(category)
 }
 
 export default UpcomingMatches
+
+
