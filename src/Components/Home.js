@@ -2,6 +2,9 @@ import React ,{useState}from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import { Box } from '@mui/material'
+import Auth from "../Auth";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
+import Private from './Private'
 import {
   MostViewed,
   PreviousMatches,
@@ -10,30 +13,41 @@ import {
 } from "./Bottom/export";
 
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-
+import { useEffect } from 'react';
+    
 const Home = () => {
 let [Text,setText]=useState('');
-console.log(Text)
-  return (
+let [signout,setsignout]=useState(0)
+let [Authenticate,setAuthenticate]=useState(0);
+
+console.log(Authenticate)
+
+return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <Router>
-        <Header setText={setText} />
+        <Header setText={setText} setAuthenticate={setAuthenticate} />
         <Routes>
-          <Route
-            path="/home"
-            element={<LiveMatches search={Text ? 1 : 0} trending={Text} />}
-          />
-          <Route
-            path="/UpcomingMatches"
-            element={
-              <UpcomingMatches search={Text ? 1 : 0} search_movie={Text} />
-            }
-          />
-          <Route path="/PreviousMatches" element={<PreviousMatches />} />
-          <Route
-            path="/MostViewed"
-            element={<MostViewed search={Text ? 1 : 0} search_series={Text} />}
-          />
+          <Route element = { <Private Authenticate={Authenticate} />} >
+            <Route
+              path="/home"
+              element={<LiveMatches search={Text ? 1 : 0} trending={Text} />}
+            />
+            <Route
+              path="/UpcomingMatches"
+              element={
+                <UpcomingMatches search={Text ? 1 : 0} search_movie={Text} />
+              }
+            />
+            <Route path="/PreviousMatches" element={<PreviousMatches />} />
+            <Route
+              path="/MostViewed"
+              element={
+                <MostViewed search={Text ? 1 : 0} search_series={Text} />
+              }
+            />
+          </Route>
+          <Route path="/" exact element={<Auth setsignout={setsignout} />} />
+          {/* <Link */}
         </Routes>
         <Footer />
       </Router>

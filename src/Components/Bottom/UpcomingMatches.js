@@ -25,6 +25,11 @@ const UpcomingMatches = ({search,search_movie}) => {
 let [movies, setmovies] = useState([]);
 let [category,setcategory]=useState([]);
 let [selected,setselected]=useState([]);
+let [overview, setoverview] = useState('');
+let [image, setimage] = useState("");
+let [date,setdate]=useState("");
+let [title, settitle] = useState("");
+let [id,setid]=useState('');
 let [page,setpage]=useState(1)
 let [total,settotal]=useState(0) ;
 let [open,setOpen]=useState(0)
@@ -74,6 +79,7 @@ fetch(
   .then((response) => response.json())
   .then((response) => {
     setmovies(response.results);
+
     settotal(response.total_pages);
   })
   .catch((err) => console.error(err));;
@@ -116,14 +122,23 @@ console.log(1);
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {movies?.map((e, index) => (
-        
-          <Grid item xs={4} sm={4} md={3} key={index} className="hover">
+          <Grid item xs={4} sm={4} md={3} key={index} >
             <Badge
               badgeContent={e.vote_average}
               color={e.vote_average > 5 ? "primary" : "secondary"}
             />
-           
-            <Item onClick={handleOpen}>
+            <Item
+            className='hover'
+              onClick={(ex) => {
+                handleOpen();
+                setoverview(e.overview);
+                setimage(e.poster_path);
+                settitle(e.original_title);
+                setdate(e.release_date);
+                console.log(e)
+                setid(e.id)
+              }}
+            >
               <Card
                 image={e.poster_path}
                 title={e.original_title || e.name}
@@ -131,9 +146,17 @@ console.log(1);
                 media={e.media_type}
               />
             </Item>
-  <ContentModal open={open} setOpen={setOpen}/>
+            <ContentModal
+              image={image}
+              id={id}
+              title={title}
+              date={date}
+              media={'movie'}
+              open={open}
+              setOpen={setOpen}
+              overview={overview}
+            />
           </Grid>
-
         ))}
       </Grid>
 
@@ -147,15 +170,15 @@ console.log(1);
           color: "white",
         }}
       >
-          <Pagination
-            sx={{ color: "white" }}
-            count={total}
-            color="primary"
-            onChange={(e) => {
-              setpage(e.target.textContent);
-              window.scroll(0, 0);
-            }}
-          />
+        <Pagination
+          sx={{ color: "white" }}
+          count={total}
+          color="primary"
+          onChange={(e) => {
+            setpage(e.target.textContent);
+            window.scroll(0, 0);
+          }}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React ,{useEffect, useState} from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,7 +7,10 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useAuth0 } from "@auth0/auth0-react";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -50,9 +53,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar({setText}) {
+export default function SearchAppBar({setText,setAuthenticate}) {
 let [text,settext]=useState('');
-  return (
+
+let {logout,isAuthenticated}=useAuth0()
+
+console.log(isAuthenticated)
+     useEffect(()=>{
+
+  setAuthenticate(isAuthenticated)
+
+
+},[isAuthenticated])
+
+return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -98,8 +112,12 @@ let [text,settext]=useState('');
               />
             </IconButton>
           </Search>
-        </Toolbar>
+      {isAuthenticated?<Button color="secondary" variant='contained' onClick={()=>{ logout({returnTo:window.location.origin})}}> SignOut </Button>:''
+       } </Toolbar>
+
+
       </AppBar>
+
     </Box>
   );
 }
