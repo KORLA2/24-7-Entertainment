@@ -6,7 +6,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { Button } from '@mui/material';
 import {useAuth0} from '@auth0/auth0-react'
-const Auth = ({setsignout}) => {
+const Auth = ({setsignout,setAuthenticate}) => {
 
 
     let {loginWithRedirect,user,isLoading ,isAuthenticated}=useAuth0()
@@ -16,7 +16,7 @@ const Auth = ({setsignout}) => {
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
-if (user) setsignout(1);
+console.log(user)
 
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
@@ -30,7 +30,7 @@ if (user) setsignout(1);
         <TabPanel value="1"><Button onClick={()=>{
 
 loginWithRedirect();
-
+console.log(isAuthenticated)
 
         }}>SignIn</Button>
         </TabPanel>

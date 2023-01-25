@@ -3,6 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import { Box } from '@mui/material'
 import Auth from "../Auth";
+import {Link} from 'react-router-dom'
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import Private from './Private'
 import {
@@ -23,36 +24,37 @@ let [Authenticate,setAuthenticate]=useState(0);
 console.log(Authenticate)
 
 return (
-    <Box sx={{ width: "100%", height: "100%" }}>
-      <Router>
-        <Header setText={setText} setAuthenticate={setAuthenticate} />
-        <Routes>
-          <Route element = { <Private Authenticate={Authenticate} />} >
-            <Route
-              path="/home"
-              element={<LiveMatches search={Text ? 1 : 0} trending={Text} />}
-            />
-            <Route
-              path="/UpcomingMatches"
-              element={
-                <UpcomingMatches search={Text ? 1 : 0} search_movie={Text} />
-              }
-            />
-            <Route path="/PreviousMatches" element={<PreviousMatches />} />
-            <Route
-              path="/MostViewed"
-              element={
-                <MostViewed search={Text ? 1 : 0} search_series={Text} />
-              }
-            />
-          </Route>
-          <Route path="/" exact element={<Auth setsignout={setsignout} />} />
-          {/* <Link */}
-        </Routes>
-        <Footer />
-      </Router>
-    </Box>
-  );
+  <Box sx={{ width: "100%", height: "100%" }}>
+    <Router>
+      <Header setText={setText} />
+      <Routes>
+          <Route
+            path="/home"
+            element={<LiveMatches search={Text ? 1 : 0} trending={Text} />}
+          />
+              <Route
+            path="/"
+            element={<LiveMatches search={Text ? 1 : 0} trending={Text} />}
+          />
+          
+          <Route
+            path="/UpcomingMatches"
+
+            element={
+              <UpcomingMatches search={Text ? 1 : 0} search_movie={Text} />
+            }
+          />
+          <Route path="/PreviousMatches" element={<PreviousMatches />} />
+          <Route
+            path="/MostViewed"
+            element={<MostViewed search={Text ? 1 : 0} search_series={Text} />}
+          />
+
+      </Routes>
+      <Footer />
+    </Router>
+  </Box>
+);
 }
 
 export default Home

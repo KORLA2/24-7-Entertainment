@@ -1,12 +1,14 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
 import { Outlet,Navigate,Route } from 'react-router-dom'
 
-const Private = ({Authenticate}) => {
+const Private = () => {
 
-console.log(Authenticate)
+let  {isAuthenticated,user}=useAuth0()
+
   return (
 
-Authenticate?<Outlet/>:<Navigate to='/'/>
+user?<Outlet/>:<Navigate to='/'/>
 
     )
 }

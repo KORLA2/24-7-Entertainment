@@ -19,7 +19,7 @@ navigate(`/${newValue}`)
 
   return (
     <BottomNavigation
-      sx={{ position: "absolute", bottom: 0, width: "100%" }}
+      sx={{ position: "fixed", bottom: 0, width: "100%" , background:'indianred', zIndex:'1'}}
       value={value}
       onChange={handleChange}
     >

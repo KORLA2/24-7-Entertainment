@@ -35,8 +35,11 @@ let [category, setcategory] = useState([]);
 let [selected, setselected] = useState([]);
 let [overview, setoverview] = useState("");
 let [image, setimage] = useState("");
+let [image1, setimage1] = useState("");
 let [date, setdate] = useState("");
 let [title, settitle] = useState("");
+let [id, setid] = useState("");
+
 let [page, setpage] = useState(1);
 let [total, settotal] = useState(0);
 let [open, setOpen] = useState(0);
@@ -82,6 +85,8 @@ console.log(movies)
                 setimage(e.poster_path);
                 settitle(e.original_title||e.name);
                 setdate(e.release_date);
+                setid(e.id)
+                setimage1(e.backdrop_path)
               }}
             >
               <Card
@@ -90,13 +95,17 @@ console.log(movies)
                 date={e.release_date || e.first_air_date}
                 media={e.media_type}
               />
+
             </Item>
+            
             <ContentModal
               image={image}
+              image1={image1}
               title={title}
               date={date}
               media={e.media_type}
               open={open}
+              id={id}
               setOpen={setOpen}
               overview={overview}
             />
@@ -104,26 +113,7 @@ console.log(movies)
         ))}
       </Grid>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          margin: "1rem",
-          color: "white",
-        }}
-      >
-        <Pagination
-          sx={{ color: "white" }}
-          count={total}
-          color="primary"
-          onChange={(e) => {
-            setpage(e.target.textContent);
-            window.scroll(0, 0);
-          }}
-        />
-      </div>
+
     </div>
   );
 }

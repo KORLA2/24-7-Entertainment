@@ -53,18 +53,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar({setText,setAuthenticate}) {
+export default function SearchAppBar({setText}) {
 let [text,settext]=useState('');
 
 let {logout,isAuthenticated}=useAuth0()
 
-console.log(isAuthenticated)
-     useEffect(()=>{
 
-  setAuthenticate(isAuthenticated)
-
-
-},[isAuthenticated])
 
 return (
     <Box sx={{ flexGrow: 1 }}>
@@ -85,7 +79,8 @@ return (
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Sports App
+    Entertainment Hub
+    
           </Typography>
 
           <Search>
