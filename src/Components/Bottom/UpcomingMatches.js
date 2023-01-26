@@ -64,9 +64,7 @@ if(search===0)
       settotal(response.total_pages);
     })
     .catch((err) => console.error(err));
-console.log(0);
 
-  
   }
 
 
@@ -104,16 +102,22 @@ console.log(1);
       ))}
 
       {category?.map((e, idx) => (
+    
         <Chip
           clickable
           key={idx}
           onClick={() => {
+            
             setselected([...selected, e]);
+
             setcategory(category.filter((cat) => e.id !== cat.id));
+          
           }}
+
           label={e.name}
           sx={{ background: "white", margin: "5px" }}
         />
+
       ))}
 
       <Grid

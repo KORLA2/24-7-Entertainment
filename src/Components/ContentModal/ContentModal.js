@@ -58,7 +58,7 @@ console.log(res.cast)
 const items =cast?.map((e)=>(  <div> <img style={{ 
  objectFit:'contain',
  }} src={"https://image.tmdb.org/t/p/w300/"+`${e.profile_path}`}  onDragStart={handleDragStart} role="presentation" /> <b>{e.name}</b> </div>))
-jj
+
 let res = {
   0: { items: 3 },
   512: { items: 5 },
@@ -96,11 +96,10 @@ let res = {
               /> */}
               <img
                 src={"https://image.tmdb.org/t/p/w500/" + `${image1}`}
-                style={{
-                  height: "100%",
-                  width: "100%",
-                  objectFit: "contain",
-                }}
+                // style={{
+              
+                //   objectFit: "contain",
+                // }}
               />
               <div
                 style={{
@@ -177,6 +176,7 @@ let res = {
                 href={`https://www.youtube.com/watch?v=${video}`}
               >
                 Watch Trailer
+                
               </Button>
             </Grid>
           </Grid>
