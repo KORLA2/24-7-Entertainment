@@ -72,8 +72,9 @@ useEffect(() => {
         }}
       >
         <Pagination
-          sx={{ color: "white" }}
+          sx={{ color: "white" ,m:5}}
           count={total}
+        
           color="primary"
           onChange={(e) => {
             setpage(e.target.textContent);

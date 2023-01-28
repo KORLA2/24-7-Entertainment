@@ -1,4 +1,4 @@
-export {default as LiveMatches} from './LiveMatches'
-export {default as MostViewed} from "./MostViewed";
-export {default as UpcomingMatches} from "./UpcomingMatches";
-export {default as PreviousMatches} from "./PreviousMatches";
+export {default as Trending} from './Trending'
+export {default as TV_Series} from "./TV_Series";
+export {default as Movies} from "./Movies";
+export {default as Search} from "./Search";

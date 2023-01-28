@@ -3,53 +3,33 @@ import Header from './Header'
 import Footer from './Footer'
 import { Box } from '@mui/material'
 import Auth from "../Auth";
-import {Link} from 'react-router-dom'
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+import { Auth0Provider, useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import Private from './Private'
 import {
-  MostViewed,
-  PreviousMatches,
-  UpcomingMatches,
-  LiveMatches
+ Trending,
+ Movies,
+ TV_Series,
+ Search
 } from "./Bottom/export";
 
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import { BrowserRouter as Router,Routes,Route ,Link} from 'react-router-dom';
 import { useEffect } from 'react';
     
 const Home = () => {
-let [Text,setText]=useState('');
+let [login,setlogin]=useState('');
 let [signout,setsignout]=useState(0)
-let [Authenticate,setAuthenticate]=useState(0);
 
-console.log(Authenticate)
 
 return (
   <Box sx={{ width: "100%", height: "100%" }}>
     <Router>
-      <Header setText={setText} />
+      <Header setlogin={setlogin} />
       <Routes>
-          <Route
-            path="/home"
-            element={<LiveMatches search={Text ? 1 : 0} trending={Text} />}
-          />
-              <Route
-            path="/"
-            element={<LiveMatches search={Text ? 1 : 0} trending={Text} />}
-          />
-          
-          <Route
-            path="/UpcomingMatches"
-
-            element={
-              <UpcomingMatches search={Text ? 1 : 0} search_movie={Text} />
-            }
-          />
-          <Route path="/PreviousMatches" element={<PreviousMatches />} />
-          <Route
-            path="/MostViewed"
-            element={<MostViewed search={Text ? 1 : 0} search_series={Text} />}
-          />
-
+          <Route path="/Trending" element={<Trending />} />
+          <Route path="/Movies" element={<Movies />} />
+          <Route path="/TV Series" element={<TV_Series />} />
+          <Route path="/Search" element={<Search />} />
+  <Route path="/" element={<Auth />} />
       </Routes>
       <Footer />
     </Router>

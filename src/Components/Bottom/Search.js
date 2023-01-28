@@ -61,6 +61,7 @@ const PreviousMatches = () => {
   const [content, setcontent] = React.useState([]);
   const [page, setpage] = React.useState(2);
   const [total, settotal] = React.useState(0);
+let [open, setOpen] = useState(0);
 
 let [image, setimage] = useState("");
 let [image1, setimage1] = useState("");
@@ -71,14 +72,12 @@ let [id, setid] = useState("");
 let fetchentertainment=()=>{
 
     fetch(
-      `https://api.themoviedb.org/3/search/${
-        value === "0" ? "movie" : "tv"
-      }?api_key=6e2cc560592379165dd290f3913043c8&language=en-US&query=${search}&page=${page}&include_adult=false`
+      `https://api.themoviedb.org/3/search/${value === "0" ? "movie" : "tv"}?api_key=6e2cc560592379165dd290f3913043c8&language=en-US&query=${search}&page=${page}&include_adult=false`
     )
       .then((response) => response.json())
       .then((response) => {
         setcontent(response.results);
-console.log(response)
+console.log(response,search)
         settotal(response.total_results);
       })
       .catch((err) => console.error(err));
@@ -93,7 +92,7 @@ fetchentertainment()
     setValue(newValue);
 
   };
-
+const handleOpen = () => setOpen(true);
   return (
     <Box>
       <Box
@@ -103,6 +102,7 @@ fetchentertainment()
           justifyContent: "space-between",
           alignItems: "center",
           m: 2,
+          pl:5
         }}
         noValidate
         autoComplete="off"
@@ -151,7 +151,7 @@ fetchentertainment()
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {content?.map((e, index) => (
-            <Grid item xs={4} sm={4} md={3} key={index}>
+            <Grid item xs={4} sm={4} md={3}  sx={{p:5}}key={index}>
               <Badge
                 badgeContent={e.vote_average}
                 color={e.vote_average > 5 ? "primary" : "secondary"}

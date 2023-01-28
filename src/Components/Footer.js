@@ -24,26 +24,26 @@ navigate(`/${newValue}`)
       onChange={handleChange}
     >
       <BottomNavigationAction
-        label="Live"
-        value="home"
+        label="Trending"
+        value="Trending"
         icon={<RestoreIcon />}
       />
 
       <BottomNavigationAction
-        label="UpcomingMatches"
-        value="UpcomingMatches"
+        label="Movies"
+        value="Movies"
         icon={<Upcoming />}
       />
 
       <BottomNavigationAction
-        label="MostViewed"
-        value="MostViewed"
+        label="TV series"
+        value="TV Series"
         icon={<LocationOnIcon />}
       />
 
       <BottomNavigationAction
-        label="PreviousMatches"
-        value="PreviousMatches"
+        label="Search"
+        value="Search"
         icon={<FolderIcon />}
       />
     </BottomNavigation>

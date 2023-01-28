@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Button } from "@mui/material";
+import { Button,Avatar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -26,93 +26,61 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
 
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
-
-export default function SearchAppBar({setText}) {
+export default function SearchAppBar() {
 let [text,settext]=useState('');
 
-let {logout,isAuthenticated}=useAuth0()
+let {loginWithRedirect,logout,user ,}=useAuth0()
 
 
-
+console.log(user)
 return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-    Entertainment Hub
-    
-          </Typography>
+  <Box sx={{ flexGrow: 1 }}>
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="open drawer"
+          sx={{ mr: 2 }}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{
+            flexGrow: 1,
+            textAlign: "center",
+            fontSize: "20px",
+            color: "black",
+          }}
+        >
+          24/7 Entertainment
+        </Typography>
 
-          <Search>
-            <SearchIconWrapper></SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              onChange={(e) => {
-                settext(e.target.value);
-              }}
-              inputProps={{ "aria-label": "search" }}
+        {!user ? (
+          <Button
+            variant="filled"
+            color="primary"
+            onClick={() => loginWithRedirect() }
+          >
+            Sign IN
+          </Button>
+        ) : (
+          <Button variant="filled" color="primary" onClick={() => logout()}>
+            <Avatar
+              alt="No Image"
+              src="https://s.gravatar.com/avatar/3cbcc56dadf6151409b86f2b2ed360a1?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fgo.png"
+     
             />
-
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <SearchIcon
-                onClick={() => {
-                  setText(text);
-                }}
-              />
-            </IconButton>
-          </Search>
-      {isAuthenticated?<Button color="secondary" variant='contained' onClick={()=>{ logout({returnTo:window.location.origin})}}> SignOut </Button>:''
-       } </Toolbar>
-
-
-      </AppBar>
-
-    </Box>
-  );
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
+  </Box>
+);
 }

@@ -29,7 +29,7 @@ palette:{
 
 })
 
-const LiveMatches = () => {
+const  Trending= () => {
 let [movies, setmovies] = useState([]);
 let [category, setcategory] = useState([]);
 let [selected, setselected] = useState([]);
@@ -72,7 +72,7 @@ console.log(movies)
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {movies?.map((e, index) => (
-          <Grid item xs={4} sm={4} md={3} key={index}>
+          <Grid item xs={4} sm={4} md={3} sx={{p:5}} key={index}>
             <Badge
               badgeContent={e.vote_average}
               color={e.vote_average > 5 ? "primary" : "secondary"}
@@ -118,4 +118,4 @@ console.log(movies)
   );
 }
 
-export default LiveMatches
+export default Trending

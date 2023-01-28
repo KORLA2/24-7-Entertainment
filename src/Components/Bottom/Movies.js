@@ -53,8 +53,8 @@ fetch(
 
 useEffect(()=>{
 
-if(search===0)
-{
+
+
   fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=6e2cc560592379165dd290f3913043c8&language=en-US&page=${page}&with_genres=${geners_url}`
   )
@@ -65,25 +65,10 @@ if(search===0)
     })
     .catch((err) => console.error(err));
 
-  }
+  
 
 
-else {
 
-
-fetch(
-  `https://api.themoviedb.org/3/search/movie?api_key=6e2cc560592379165dd290f3913043c8&language=en-US&query=${search_movie}&page=${page}&include_adult=false`
-)
-  .then((response) => response.json())
-  .then((response) => {
-    setmovies(response.results);
-
-    settotal(response.total_pages);
-  })
-  .catch((err) => console.error(err));;
-console.log(1);
-
-}
 },[page,geners_url,search_movie])
 
 
@@ -175,7 +160,7 @@ console.log(1);
         }}
       >
         <Pagination
-          sx={{ color: "white" }}
+          sx={{ color: "white" ,mb:5}}
           count={total}
           color="primary"
           onChange={(e) => {
