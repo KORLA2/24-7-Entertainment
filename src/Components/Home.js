@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 const Home = () => {
 let [login,setlogin]=useState('');
 let [signout,setsignout]=useState(0)
-
+let {user}=useAuth0()
 
 return (
   <Box sx={{ width: "100%", height: "100%" }}>
@@ -31,7 +31,7 @@ return (
           <Route path="/Search" element={<Search />} />
   <Route path="/" element={<Auth />} />
       </Routes>
-      <Footer />
+    { user&&(<Footer />)}
     </Router>
   </Box>
 );

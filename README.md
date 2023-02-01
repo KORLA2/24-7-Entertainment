@@ -1,3 +1,8 @@
+# 24/7 Entertainment
+ 24/7 Entertainment is a API basd web app where users can signIn and watch trailers, IMDB rating of any movies/tv series /trending using React.js Material-UI,
+ Auth0 Authentication , and Automatically Dockerized the APP using Jenkins on Ec2 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -5,6 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+
 
 ### `npm start`
 

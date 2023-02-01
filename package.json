@@ -24,11 +24,11 @@
     "react-dom": "^18.2.0",
     "react-leaflet": "^3.2.5",
     "react-router-dom": "^6.4.2",
-    "react-scripts": "4.0.3",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+      "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,4 +41,5 @@
     "not dead",
     "not op_mini all"
   ]
+ 
 }

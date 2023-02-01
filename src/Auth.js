@@ -1,19 +1,17 @@
 import React from 'react'
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import { Button } from '@mui/material';
-import Header from './Components/Header'
-import {useAuth0} from '@auth0/auth0-react'
+import  {Box,Paper}from '@mui/material';
+
 const Auth = ({setsignout,setAuthenticate}) => {
 
 
   return (
-    <Box >
-   
+    <Box sx={{height:'100vh',width:'100vw',display:'flex',justifyContent:'center',alignItems:'center',color:'white'}} >
+   <Paper sx={{p:5}}>
 
+Welcome to 24/7 Entertainment app
+Please Sign IN to Continue
+
+   </Paper>
 
    
     </Box>
