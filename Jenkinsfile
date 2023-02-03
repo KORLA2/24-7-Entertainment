@@ -2,7 +2,7 @@ pipeline{
 
   agents any
   
-
+  stages{
   stage('build'){
         steps{
         echo "Iam at build stage of project"
@@ -26,5 +26,5 @@ pipeline{
   }
 
   stage('deploy'){    steps{echo "Iam at deploy stage";} }
-  
+  }
 }
