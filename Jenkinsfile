@@ -1,13 +1,9 @@
 pipeline{
 
-  agents any
+ 
   
   stages{
-  stage('build'){
-        steps{
-        echo "Iam at build stage of project"
-        }
-        }
+
   stage('build-image'){
     steps{
       echo "Building Docker image"
