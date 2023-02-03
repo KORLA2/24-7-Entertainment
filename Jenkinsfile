@@ -1,7 +1,9 @@
 pipeline{
 
   agents any
-  stage('build){
+  
+
+  stage('build'){
         steps{
         echo "Iam at build stage of project"
         }
