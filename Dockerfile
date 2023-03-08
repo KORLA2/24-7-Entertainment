@@ -1,8 +1,9 @@
 FROM node:18-alpine
-WORKDIR /app
-COPY package.json  .
-RUN npm install -g npm@9.4.0
-COPY . .
-EXPOSE  3000
-CMD ["npm" ,"start"]
+WORKDIR /movies
+ADD package*.json ./
+RUN  npm i --legacy-peer-deps
+ADD . .
 
+EXPOSE 3000
+
+CMD ["npm","start"]
