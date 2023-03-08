@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: | 
        docker build . --file Dockerfile --tag my-image-name:movies
-       docker run --interactive -d -p 3010:3000  --tty --entrypoint /bin/sh movies
+       docker images
