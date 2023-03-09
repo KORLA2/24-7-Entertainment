@@ -1,6 +1,6 @@
 # 24/7 Entertainment
  24/7 Entertainment is a API basd web app where users can signIn and watch trailers, IMDB rating of any movies/tv series /trending using React.js Material-UI,
- Auth0 Authentication , and  created CI/CD pipeline using  Github Actions which automatically trigerres change in code and dockerizes the app and push to  
+ Auth0 Authentication , and  created CI/CD pipeline using  Github Actions which automatically triggeres change in code and dockerizes the app and push to  
 AWS ECR.
 
 # Getting Started with Create React App
