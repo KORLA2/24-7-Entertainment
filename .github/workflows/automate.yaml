@@ -47,6 +47,9 @@ jobs:
        with:
         aws-access-key-id: ${{secrets.AWS_ACCESS_ID}}
         aws-secret-access-key: ${{secrets.AWS_SECRET_KEY }} 
-     - name: Deploying 
-       run : npm run client-deploy    
-          
+     - name: build 
+       run : npm run build   
+     - name: s3 deploy
+       run : aws s3 sync  build/ s3://24-7entertainment  
+     - name : Cloud front
+       run : aws cloudfront create-invalidation  --distribution-id E2X2GKGGB38KWH --paths '/*'  
