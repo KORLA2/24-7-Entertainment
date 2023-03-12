@@ -5,7 +5,7 @@ on:
     branches:
       -  "main"
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
     steps:
    
@@ -28,10 +28,11 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/practice:latest
-  name: AWS Stuff
-
-  runs-on: ubuntu-latest
-  steps: 
+  job2:  
+   name: AWS Stuff
+  
+   runs-on: ubuntu-latest
+   steps: 
     
      - name: Checkouting
        uses: actions/checkout@v3
