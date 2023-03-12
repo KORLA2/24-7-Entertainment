@@ -46,7 +46,8 @@ jobs:
        uses: aws-actions/configure-aws-credentials@v1
        with:
         aws-access-key-id: ${{secrets.AWS_ACCESS_ID}}
-        aws-secret-access-key: ${{secrets.AWS_SECRET_KEY }} 
+        aws-secret-access-key: ${{secrets.AWS_SECRET_KEY }}
+        aws-region: ap-south-1 
      - name: build 
        run : npm run build   
      - name: s3 deploy
