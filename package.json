@@ -30,8 +30,12 @@
     "web-vitals": "^1.1.2",
       "react-scripts": "^5.0.1"
   },
+ 
   "scripts": {
     "start": "react-scripts start",
+    "client-s3-deploy": "aws s3 sync  build/ s3://24-7entertainment",
+    "client-cloudfront-invalidation": "aws cloudfront create-invalidation  --distribution-id E2X2GKGGB38KWH --paths '/*'  ",
+    "client-deploy":" npm run build && npm run client-s3-deploy && npm run client-cloudfront-invalidation",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

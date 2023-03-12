@@ -1,12 +1,11 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import FolderIcon from "@mui/icons-material/Folder";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { Upcoming } from '@mui/icons-material';
-import { Navigate, useNavigate } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TvIcon from '@mui/icons-material/Tv';
+import MovieCreationIcon from '@mui/icons-material/MovieCreation';
+import {  useNavigate } from "react-router-dom";
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState("Live");
 let navigate=useNavigate()
@@ -26,25 +25,25 @@ navigate(`/${newValue}`)
       <BottomNavigationAction
         label="Trending"
         value="Trending"
-        icon={<RestoreIcon />}
+        icon={< TrendingUpIcon/>}
       />
 
       <BottomNavigationAction
         label="Movies"
         value="Movies"
-        icon={<Upcoming />}
+        icon={<MovieCreationIcon />}
       />
 
       <BottomNavigationAction
         label="TV series"
         value="TV Series"
-        icon={<LocationOnIcon />}
+        icon={<TvIcon />}
       />
 
       <BottomNavigationAction
         label="Search"
         value="Search"
-        icon={<FolderIcon />}
+        icon={< SearchIcon/>}
       />
     </BottomNavigation>
   );
