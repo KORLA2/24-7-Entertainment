@@ -52,5 +52,4 @@ jobs:
        run : npm run build   
      - name: s3 deploy
        run : aws s3 sync  build/ s3://24-7entertainment  
-     - name : Cloud front
-       run : aws cloudfront create-invalidation  --distribution-id E2X2GKGGB38KWH --paths '/*'  
+     
