@@ -51,5 +51,5 @@ jobs:
      - name: build 
        run : npm run build   
      - name: s3 deploy
-       run : aws s3 sync  build/ s3://24-7entertainment  
+       run : aws s3 sync  build/ s3://24-7entertainmentalways  
      
