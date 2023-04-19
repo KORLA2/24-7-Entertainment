@@ -11,7 +11,7 @@ const App = () => {
       <Auth0Provider
         domain = "movies-app.us.auth0.com"
         clientId= "R7npFdM1IlC83mTlCEeDubANYAZbJklC" 
-        redirectUri={'https://d1kt4r7eeheq3o.cloudfront.net/Movies'}
+        redirectUri={'https://d3pznlcqkeotbh.cloudfront.net/Movies'}
       >
         <Home />
         
