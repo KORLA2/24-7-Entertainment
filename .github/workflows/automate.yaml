@@ -53,5 +53,5 @@ jobs:
      - name: s3 deploy
        run : aws s3 sync  build/ s3://24-7entertainmentalways 
      - name: cloudfront
-       run: aws cloudfront create-invalidation --distribution-id E7OFWMJNHQ3WS --paths "/*"
+       run: aws cloudfront create-invalidation --distribution-id E7OFWMJNHQ3WS --paths '/*'
      
